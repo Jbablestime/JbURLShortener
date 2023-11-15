@@ -3,7 +3,7 @@ import hashlib
 
 app = Flask(__name__)
 
-# In-memory database for simplicity. In a real application, use a proper database.
+
 url_database = {}
 
 @app.route('/')
@@ -26,7 +26,6 @@ def redirect_to_original(short_url):
         return render_template('index.html', error='URL not found.')
 
 def generate_short_url(long_url):
-    # Simple hashing for demonstration purposes. Use a more secure method in production.
     hashed = hashlib.sha256(long_url.encode()).hexdigest()[:8]
     return hashed
 
